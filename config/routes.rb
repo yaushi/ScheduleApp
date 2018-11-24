@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   #get '/users/new' => "users#new"
   #get '/users/create' => "users#create"
   resources :users
@@ -12,7 +13,9 @@ Rails.application.routes.draw do
   patch  '/users/:id',      to: 'users#update'  # 特定のユーザ更新
   delete '/users/:id',      to: 'users#destroy' # 特定のユーザ削除  
 =end
-  
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   get '/'  => "home#top"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
