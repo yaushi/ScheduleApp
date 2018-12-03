@@ -1,0 +1,33 @@
+users#show
+
+<%= month_calendar do |date| %>
+  <%= date %>
+  <%= events(date) %>
+    <%# if events(date) %>
+      <%# events(date).each do |meeting| %>
+        <div>
+          <%#= meeting.name %>
+        </div>
+      <%# end %>
+    <%# end %>
+<% end %>
+
+<%= week_calendar number_of_weeks: 2 do |date| %>
+  <%= date %>
+<% end %>
+
+<%= month_calendar(events: @meetings) do |date, meetings| %>
+  <%= date %>
+    <% meetings.each do |meeting| %>
+      <div>
+        
+          <%= meeting.name %>
+          <%= meeting.userid %>
+      </div>
+    <% end %>
+<% end %>
+
+<%= @meetings.each do |m| %> 
+  <%= m.name %>
+<% end %>
+

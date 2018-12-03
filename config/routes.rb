@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :meetings
   #get '/users/new' => "users#new"
   #get '/users/create' => "users#create"
   resources :users

@@ -17,6 +17,21 @@ class UsersController < ApplicationController
     
   end
   
+  def show
+    #----表示対象としたいユーザーのmeetingレコードを取得----#
+    
+    ##whereメソッドの戻り値は、「relationクラス」のインスタンスの為、「arrayクラス」に変換（ pushメソッドを使用したい）
+    ##dupメソッドにてコピーを作成（arrayクラスに変換すると、freeze=trueとなっており、pushメソッドが使用できない）
+    @meetings = Meeting.where(userid: params[:id]).to_ary().dup()
+ 
+    tmp = Meeting.where(userid: 1).to_ary()
+    #↑相互フォローユーザのMeeting取得時に、本人のMeetingを取得しないようにコントロールが必要
+    tmp.each do |record|
+      @meetings.push(record)
+    end
+    
+  end
+  
   
   private
 
