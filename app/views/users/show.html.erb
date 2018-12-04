@@ -6,8 +6,12 @@ users#show
   <%= date %>
     <% meetings.each do |meeting| %>
       <div>
-        
+        <% if meeting.userid == session[:user_id]%>
+          <%= link_to meeting.name, "/meetings/#{meeting.id}" %>
+        <% else %>
           <%= meeting.name %>
+        <% end %>
+          <%#= meeting.id %>
           <%= meeting.userid %>
       </div>
     <% end %>
