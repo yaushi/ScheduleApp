@@ -1,20 +1,6 @@
 users#show
 
-<%= month_calendar do |date| %>
-  <%= date %>
-  <%= events(date) %>
-    <%# if events(date) %>
-      <%# events(date).each do |meeting| %>
-        <div>
-          <%#= meeting.name %>
-        </div>
-      <%# end %>
-    <%# end %>
-<% end %>
-
-<%= week_calendar number_of_weeks: 2 do |date| %>
-  <%= date %>
-<% end %>
+<div><%= link_to "Add Schedule", "/meetings/new" %></div>
 
 <%= month_calendar(events: @meetings) do |date, meetings| %>
   <%= date %>
