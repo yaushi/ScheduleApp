@@ -1,4 +1,10 @@
 class UsersController < ApplicationController
+  
+  def index
+    @user = User.all
+  end
+  
+  
   def new
     @user = User.new
   end
@@ -18,6 +24,7 @@ class UsersController < ApplicationController
   end
   
   def show
+    @user = User.find_by(id: params[:id])
     #----表示対象としたいユーザーのmeetingレコードを取得----#
     
     ##whereメソッドの戻り値は、「relationクラス」のインスタンスの為、「arrayクラス」に変換（ pushメソッドを使用したい）
