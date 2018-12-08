@@ -3,10 +3,10 @@
 </h1>
 
 <div>
-  <% if Relationship.find_by(follower_id: session[:user_id], followed_id: @user.id) %>
+  <% if Relationship.find_by(follower_id: @current_user.id, followed_id: @user.id) %>
     <%= link_to "フォロー済み", "/relationships/#{params[:id]}", method: :delete %>
-  <% elsif session[:user_id] == @user.id%>
-    
+  <% elsif @current_user.id == @user.id%>
+  
   <% else %>
     <%= link_to "フォローする", "/relationships/#{params[:id]}", method: :post %>
   <% end %>
@@ -20,12 +20,11 @@
   <%= date %>
     <% meetings.each do |meeting| %>
       <div>
-        <% if meeting.userid == session[:user_id]%>
+        <% if meeting.userid == @current_user.id%>
           <%= link_to meeting.name, "/meetings/#{meeting.id}" %>
         <% else %>
           <%= meeting.name %>
         <% end %>
-          <%#= meeting.id %>
           <%= meeting.userid %>
       </div>
     <% end %>

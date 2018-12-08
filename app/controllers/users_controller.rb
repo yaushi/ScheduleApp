@@ -32,8 +32,11 @@ class UsersController < ApplicationController
     ##dupメソッドにてコピーを作成（arrayクラスに変換すると、freeze=trueとなっており、pushメソッドが使用できない）
     @meetings = Meeting.where(userid: params[:id]).to_ary().dup()
     
-    relationships1 = Relationship.where(follower_id: session[:user_id])
-    relationships2 = Relationship.where(followed_id: session[:user_id])
+    #relationships1 = Relationship.where(follower_id: session[:user_id])
+    #relationships2 = Relationship.where(followed_id: session[:user_id])
+
+    relationships1 = Relationship.where(follower_id: @current_user.id)
+    relationships2 = Relationship.where(followed_id: @current_user.id)
     
     relationships1.each do |relationship1|
       relation = relationships2.find_by(follower_id: relationship1.followed_id)
