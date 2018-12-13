@@ -1,5 +1,13 @@
-<h1>New Meeting</h1>
-
-<%= render 'form', meeting: @meeting %>
-
-<%= link_to 'Back', "/users/#{@current_user.id}" %>
+<div class='meeting-container'>  
+  <div class='meeting-contents'>
+    <div class='meeting-top'>
+      <h2>予定の追加</h2>
+    </div>
+    <div class='meeting-center'>
+      <%= render 'form', meeting: @meeting %>
+    </div>
+    <div class='meeting-bottom'>
+      <%= link_to 'Back', "/users/#{@current_user.id}" %>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,15 @@
-#index.html.erb
 
-<div>
-  
+
+<div class='index-container'>
+
+  <h2>ユーザー一覧</h2>
+
   <% @user.each do |user| %>
-    <div>
-      <%#= "name: #{user.name}     email:#{user.email}" %>
-        ユーザー名：
+    <div class='user'>
         <%= link_to( user.name, "users/#{user.id}") %>
     </div>
     
   <% end %>
-  
   
 </div>
   

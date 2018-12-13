@@ -1,7 +1,15 @@
-<h1>Editing Meeting</h1>
-
-<%= render 'form', meeting: @meeting %>
-
-<%= link_to 'Show', @meeting %> |
-<%= link_to "Delete", meeting_path, method: :delete %> |
-<%= link_to 'Back', "/users/#{@current_user.id}" %>
+<div class='meeting-container'>  
+  <div class='meeting-contents'>
+    <div class='meeting-top'>
+      <h2>予定の編集</h2>
+    </div>
+    <div class='meeting-center'>
+      <%= render 'form', meeting: @meeting %>
+    </div>
+    <div class='meeting-bottom'>
+      <%= link_to 'Show', @meeting %> |
+      <%= link_to "Delete", meeting_path, method: :delete %> |
+      <%= link_to 'Back', "/users/#{@current_user.id}" %>
+    </div>
+  </div>
+</div>

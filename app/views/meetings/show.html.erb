@@ -1,14 +1,26 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @meeting.name %>
-</p>
+<div class='meeting-container'>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @meeting.start_time %>
-</p>
-
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', "/users/#{@current_user.id}" %>
+  <div class='meeting-contents'>
+    <div class='meeting-top'>
+      <h2>
+        <%= @meeting.name %>
+      </h2>
+    </div>
+    <div class='meeting-center'>
+      <p>
+        <strong>時　間: </strong>
+        <%= @meeting.start_time %>
+      </p>
+      <p>
+        <strong>ユーザ: </strong>
+        <%= User.find_by(id: @meeting.userid).name %>
+      </p>
+    </div>
+    <div class='meeting-bottom'>
+      <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+      <%= link_to 'Back', "/users/#{@current_user.id}" %>
+    </div>
+  </div>
+</div>

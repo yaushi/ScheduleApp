@@ -1,3 +1,36 @@
 // Place all the styles related to the Meetings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.meeting-container{
+  text-align: center;
+  padding-top: 20px;
+  
+  
+}
+.meeting-top{
+  text-align:left;
+  font-size:20px;
+  padding-bottom: 10px;
+  
+}
+
+.meeting-contents{
+  display:inline-block;
+  text-align: left;
+  font-size:15px;
+  
+  
+}
+.meeting-center{
+  background-color:#e0e0e0;
+  padding: 10px 20px;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.meeting-bottom{
+  padding-bottom: 15px;
+  text-align: right;
+}

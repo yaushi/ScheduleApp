@@ -14,4 +14,70 @@ body{
   padding-right:0px;
 }
 
+thead{
+  background-color: #E0E000;
+  border-collapse: collapse;
+}
 
+.simple-calendar {
+  background-color: #E0E0E0;
+  padding: 30px;
+  border-radius: 10px 10px 10px 10px;
+  
+  .table {
+    
+    border: solid 1px #909090; 
+    border-collapse: collapse;
+
+  }
+  .table td, .table th{
+    border: solid 1px #909090;
+  }
+  .table-striped{
+    background-color:#E0E0E0;
+  }
+  
+  .calendar-heading {
+    
+    
+  }
+  .add-schedule{
+    margin:2px;
+    float:right;
+    vertical-align:baseline;
+  }
+  .schedule{
+    background-color:lavender;
+    border-radius: 5px 5px 5px 5px;
+    margin:2px;
+    padding:2px;
+    display:block;
+    white-space: nowrap;
+  }
+  
+  .day {
+    
+  }
+
+  .wday-0 {}
+  .wday-1 {}
+  .wday-2 {}
+  .wday-3 {}
+  .wday-4 {}
+  .wday-5 {}
+  .wday-6 {}
+
+  .today {
+    text-decoration: underline;
+  }
+  .past {}
+  .future {}
+
+  .start-date {}
+
+  .prev-month {}
+  .next-month { }
+  .current-month {}
+
+  .has-events {}
+}

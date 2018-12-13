@@ -10,22 +10,23 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :meeting_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :meeting_start_time %>
-  </div>
-
-  <div class="field">
-    <%= form.hidden_field :userid, :value => session[:user_id] %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+    <div class="field">
+      <%= form.label :予定： %>
+      <%= form.text_field :name, id: :meeting_name %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :日時： %>
+      <%= form.datetime_select :start_time, id: :meeting_start_time %>
+    </div>
+  
+    <div class="field">
+      <%= form.hidden_field :userid, :value => session[:user_id] %>
+    </div>
+  
+    <div class='meeting-bottom'>
+      <div class="actions">
+        <%= form.submit %>
+      </div>
+    </div>
 <% end %>

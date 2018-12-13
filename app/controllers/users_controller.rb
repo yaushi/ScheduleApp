@@ -33,34 +33,26 @@ class UsersController < ApplicationController
     ##dupメソッドにてコピーを作成（arrayクラスに変換すると、freeze=trueとなっており、pushメソッドが使用できない）
     @meetings = Meeting.where(userid: params[:id]).to_ary().dup()
     
-    #relationships1 = Relationship.where(follower_id: session[:user_id])
-    #relationships2 = Relationship.where(followed_id: session[:user_id])
-
-    relationships1 = Relationship.where(follower_id: @current_user.id)
-    relationships2 = Relationship.where(followed_id: @current_user.id)
+    if @user.id == @current_user.id
+      relationships1 = Relationship.where(follower_id: @current_user.id)
+      relationships2 = Relationship.where(followed_id: @current_user.id)
     
-    relationships1.each do |relationship1|
-      relation = relationships2.find_by(follower_id: relationship1.followed_id)
-      
-      if relation 
-        tmp = Meeting.where(userid: relation.follower_id).to_ary()
-        #↑相互フォローユーザのMeeting取得時に、本人のMeetingを取得しないようにコントロールが必要
+      relationships1.each do |relationship1|
+        relation = relationships2.find_by(follower_id: relationship1.followed_id)
         
-        tmp.each do |record|
-        @meetings.push(record)
+        if relation 
+          tmp = Meeting.where(userid: relation.follower_id).to_ary()
+          #↑相互フォローユーザのMeeting取得時に、本人のMeetingを取得しないようにコントロールが必要
+          
+          tmp.each do |record|
+          @meetings.push(record)
+          end
+          
         end
         
       end
       
     end
-    
- 
-    #tmp = Meeting.where(userid: 3).to_ary()
-    #↑相互フォローユーザのMeeting取得時に、本人のMeetingを取得しないようにコントロールが必要
-    #tmp.each do |record|
-      
-      #@meetings.push(record)
-    #end
     
   end
   
