@@ -10,12 +10,24 @@
     </div>
     <div class='meeting-center'>
       <p>
+        <strong>内　容: </strong>
+        <%= @meeting.content %>
+      </p>
+      <p>
         <strong>時　間: </strong>
         <%= @meeting.start_time %>
       </p>
       <p>
         <strong>ユーザ: </strong>
         <%= User.find_by(id: @meeting.userid).name %>
+      </p>
+      <p>
+        <strong>表示／非表示: </strong>
+        <% if @meeting.hidden %>
+          非表示
+        <% else %>
+          表示
+        <% end %>
       </p>
     </div>
     <div class='meeting-bottom'>

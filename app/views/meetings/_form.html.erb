@@ -14,12 +14,22 @@
       <%= form.label :予定： %>
       <%= form.text_field :name, id: :meeting_name %>
     </div>
-  
+    
+    <div class="field">
+      <%= form.label :内容： %>
+      <%= form.text_field :content, id: :meeting_content %>
+    </div>
+    
     <div class="field">
       <%= form.label :日時： %>
       <%= form.datetime_select :start_time, id: :meeting_start_time %>
     </div>
   
+    <div class="field">
+      <%= form.label :表示／非表示： %>
+      <%= form.select :hidden,[["表示", "false"], ["非表示", "true"]] ,id: :meeting_hidden %>
+    </div>
+    
     <div class="field">
       <%= form.hidden_field :userid, :value => session[:user_id] %>
     </div>
