@@ -27,10 +27,6 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find_by(id: params[:id])
-    #----表示対象としたいユーザーのmeetingレコードを取得----#
-    
-    ##whereメソッドの戻り値は、「relationクラス」のインスタンスの為、「arrayクラス」に変換（ pushメソッドを使用したい）
-    ##dupメソッドにてコピーを作成（arrayクラスに変換すると、freeze=trueとなっており、pushメソッドが使用できない）
     @meetings = Meeting.where(userid: params[:id]).to_ary().dup()
     
     if @user.id == @current_user.id

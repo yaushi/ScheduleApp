@@ -68,7 +68,10 @@ thead{
   .wday-6 {}
 
   .today {
-    text-decoration: underline;
+    color:red;
+    .schedule {
+      color:black;
+    }
   }
   .past {}
   .future {}
