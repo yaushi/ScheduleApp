@@ -17,7 +17,6 @@
   <%= month_calendar(events: @meetings) do |date, meetings| %>
     <%= date %>
       <% meetings.each do |meeting| %>
-        <% if !meeting.hidden %>
         
           <div class="schedule">
             <% if meeting.userid == @current_user.id%>
@@ -27,19 +26,8 @@
               <%= meeting.name %>
               <%= "( #{User.find_by(id: meeting.userid).name} )" %>
             <% end %>
-            
           </div>
         
-        <% else %>
-        
-          <% if meeting.userid == @current_user.id%>
-            <div class="schedule">
-              <%= link_to meeting.name, "/meetings/#{meeting.id}" %>
-              <%= "( #{User.find_by(id: meeting.userid).name} )" %>
-            </div>  
-          <% end %>
-        
-        <% end %>
       <% end %>
   <% end %>
 </div>

@@ -36,11 +36,11 @@ class UsersController < ApplicationController
         relation = relationships2.find_by(follower_id: relationship1.followed_id)
         
         if relation 
-          tmp = Meeting.where(userid: relation.follower_id).to_ary()
+          tmp = Meeting.where(userid: relation.follower_id, hidden: false).to_ary()
           #↑相互フォローユーザのMeeting取得時に、本人のMeetingを取得しないようにコントロールが必要
           
           tmp.each do |record|
-          @meetings.push(record)
+            @meetings.push(record)
           end
           
         end
