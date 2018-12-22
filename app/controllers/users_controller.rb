@@ -29,24 +29,15 @@ class UsersController < ApplicationController
     @meetings = Meeting.where(userid: params[:id]).to_ary().dup()
     
     if @user.id == @current_user.id
-      relationships1 = Relationship.where(follower_id: @current_user.id)
-      relationships2 = Relationship.where(followed_id: @current_user.id)
-    
-      relationships1.each do |relationship1|
-        relation = relationships2.find_by(follower_id: relationship1.followed_id)
-        
-        if relation 
-          tmp = Meeting.where(userid: relation.follower_id, hidden: false).to_ary()
-          #↑相互フォローユーザのMeeting取得時に、本人のMeetingを取得しないようにコントロールが必要
-          
+
+      relationships_each_test(@current_user.id).each do |relation|
+        tmp = Meeting.where(userid: relation, hidden: false).to_ary
+
           tmp.each do |record|
             @meetings.push(record)
           end
-          
-        end
-        
       end
-      
+
     end
     
   end
@@ -57,6 +48,13 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :email, :password)
                                    
+    end
+    
+    def relationships_each_test(userid)
+      
+      relationships_follower = Relationship.where(follower_id: userid).pluck(:followed_id)
+      Relationship.where(followed_id: userid).where(follower_id: relationships_follower).pluck(:follower_id)
+      
     end
   
 end
