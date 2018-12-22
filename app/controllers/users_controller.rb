@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     
     if @user.id == @current_user.id
 
-      relationships_each_test(@current_user.id).each do |relation|
+      relationships_each(@current_user.id).each do |relation|
         tmp = Meeting.where(userid: relation, hidden: false).to_ary
 
           tmp.each do |record|
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
                                    
     end
     
-    def relationships_each_test(userid)
+    def relationships_each(userid)
       
       relationships_follower = Relationship.where(follower_id: userid).pluck(:followed_id)
       Relationship.where(followed_id: userid).where(follower_id: relationships_follower).pluck(:follower_id)
