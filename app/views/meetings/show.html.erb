@@ -31,7 +31,9 @@
       </p>
     </div>
     <div class='meeting-bottom'>
-      <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+      <% if @meeting.userid == @current_user.id %> 
+        <%= link_to 'Edit', edit_meeting_path(@meeting) %> |
+      <% end %>
       <%= link_to 'Back', "/users/#{@current_user.id}" %>
     </div>
   </div>

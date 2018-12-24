@@ -14,6 +14,8 @@ class ApplicationController < ActionController::Base
     end
   end
   
+
+  
   def forbid_login_user
     if @current_user
       flash[:notice] = "すでにログインしています"

@@ -18,15 +18,19 @@
     <%= date %>
       <% meetings.each do |meeting| %>
         
-          <div class="schedule">
+          
             <% if meeting.userid == @current_user.id%>
-              <%= link_to meeting.name, "/meetings/#{meeting.id}" %>
-              <%= "( #{User.find_by(id: meeting.userid).name} )" %>
+              <div class="schedule">
+                <%= link_to meeting.name, "/meetings/#{meeting.id}" %>
+                <%= "( #{User.find_by(id: meeting.userid).name} )" %>
+              </div> 
             <% else %>
-              <%= meeting.name %>
-              <%= "( #{User.find_by(id: meeting.userid).name} )" %>
+              <div class="schedule-others">
+                <%= link_to meeting.name, "/meetings/#{meeting.id}" %>
+                <%= "( #{User.find_by(id: meeting.userid).name} )" %>
+              </div>
             <% end %>
-          </div>
+          
         
       <% end %>
   <% end %>

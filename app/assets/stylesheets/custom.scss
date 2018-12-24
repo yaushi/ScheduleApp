@@ -47,6 +47,15 @@ thead{
     vertical-align:baseline;
   }
   .schedule{
+    background-color:lightblue;
+    border-radius: 5px 5px 5px 5px;
+    margin:2px;
+    padding:2px;
+    display:block;
+    white-space: nowrap;
+  }
+
+  .schedule-others{
     background-color:lavender;
     border-radius: 5px 5px 5px 5px;
     margin:2px;

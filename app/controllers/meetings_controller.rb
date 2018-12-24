@@ -1,5 +1,6 @@
 class MeetingsController < ApplicationController
   before_action :set_meeting, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_correct_user, only: [:edit, :update, :destroy]
   before_action :authenticate_user
 
   # GET /meetings
@@ -77,7 +78,7 @@ class MeetingsController < ApplicationController
     end
     
     def ensure_correct_user
-      @meeting = Meeting.find_by(id: params[:id])
+      #@meeting = Meeting.find_by(id: params[:id])
       if @meeting.user_id != @current_user.id
         flash[:notice] = "権限がありません"
         redirect_to("/posts/index")
