@@ -18,7 +18,6 @@
     <%= date %>
       <% meetings.each do |meeting| %>
         
-          
             <% if meeting.userid == @current_user.id%>
               <div class="schedule">
                 <%= link_to meeting.name, "/meetings/#{meeting.id}" %>
@@ -30,7 +29,6 @@
                 <%= "( #{User.find_by(id: meeting.userid).name} )" %>
               </div>
             <% end %>
-          
         
       <% end %>
   <% end %>

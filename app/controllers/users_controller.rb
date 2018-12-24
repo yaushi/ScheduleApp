@@ -2,7 +2,14 @@ class UsersController < ApplicationController
   before_action :authenticate_user, {only: [:show]}
   
   def index
-    @user = User.all
+    @users = User.all
+    
+    relationships_follower = Relationship.where(follower_id: @current_user.id).pluck(:followed_id)
+    relationships_followed = Relationship.where(followed_id: @current_user.id).pluck(:follower_id)
+    
+    @follower = User.where(id: relationships_follower)
+    @followed = User.where(id: relationships_followed)
+    
   end
   
   
