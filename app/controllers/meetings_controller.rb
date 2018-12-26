@@ -17,7 +17,6 @@ class MeetingsController < ApplicationController
   # GET /meetings/new
   def new
     @meeting = Meeting.new
-    #@user = User.find(session[:user_id])
     @user = User.find(@current_user.id)
     
   end
@@ -30,7 +29,6 @@ class MeetingsController < ApplicationController
   # POST /meetings.json
   def create
     @meeting = Meeting.new(meeting_params)
-
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
@@ -78,10 +76,9 @@ class MeetingsController < ApplicationController
     end
     
     def ensure_correct_user
-      #@meeting = Meeting.find_by(id: params[:id])
-      if @meeting.user_id != @current_user.id
+      if @meeting.userid != @current_user.id
         flash[:notice] = "権限がありません"
-        redirect_to("/posts/index")
+        redirect_to("/")
       end
     end
     

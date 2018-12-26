@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: params[:session][:email].downcase, password: params[:session][:password])
     if @user
       # 変数sessionに、ログインに成功したユーザーのidを代入してください
-      #session[:user_id] = @user.id
       log_in(@user)
       flash[:notice] = "ログインしました"
       redirect_to("/")

@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:notice] = "ユーザー登録が完了しました"
+      log_in(@user)
       redirect_to '/'
     else
       @errors = @user.errors.full_messages
