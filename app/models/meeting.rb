@@ -4,6 +4,6 @@ class Meeting < ApplicationRecord
   validates :hidden, inclusion: {in: [true, false]}
   validates :userid, presence: true
   
-  belongs_to :user, :foreign_key => 'userid'
+  belongs_to :user , class_name: 'User' ,optional: true
 
 end
