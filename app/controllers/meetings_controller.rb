@@ -43,6 +43,7 @@ class MeetingsController < ApplicationController
   # PATCH/PUT /meetings/1
   # PATCH/PUT /meetings/1.json
   def update
+   
     respond_to do |format|
       if @meeting.update(meeting_params)
         format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
